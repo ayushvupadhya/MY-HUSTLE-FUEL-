@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Deep Work Focus Timer - My Hustle Fuel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "cyber-blue": "#00F0FF",
+                        "pure-black": "#000000",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --cyber-blue: #00F0FF;
+        }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #000000;
+        }
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .glow-text {
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+        }
+        .glow-border {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-pure-black text-white transition-colors duration-300">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden font-display">
+<header class="flex items-center justify-between px-6 py-6 lg:px-12">
+<div class="flex items-center gap-3">
+<div class="size-6 bg-white flex items-center justify-center rounded-sm">
+<svg class="text-black w-4 h-4" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 6H42L36 24L42 42H6L12 24L6 6Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-sm font-bold tracking-widest uppercase">My Hustle Fuel</h2>
+</div>
+<button class="group flex items-center justify-center rounded-full size-10 bg-transparent border border-white/20 hover:bg-white hover:text-black transition-all">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</header>
+<main class="flex-1 flex flex-col items-center justify-center px-4 relative">
+<div class="mb-8 text-center">
+<p class="text-[10px] uppercase tracking-[0.4em] font-medium opacity-50 mb-2 text-white">Current Sprint</p>
+<h1 class="text-white text-xl font-bold tracking-tight">Deep Work Session 01</h1>
+</div>
+<div class="relative flex items-center justify-center">
+<svg class="w-[340px] h-[340px] md:w-[480px] md:h-[480px]">
+<circle class="text-white/5" cx="50%" cy="50%" fill="transparent" r="48%" stroke="currentColor" stroke-width="2"></circle>
+<circle class="text-cyber-blue progress-ring-circle" cx="50%" cy="50%" fill="transparent" r="48%" stroke="currentColor" stroke-dasharray="1500" stroke-dashoffset="450" stroke-linecap="square" stroke-width="2"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<div class="flex items-baseline gap-2 md:gap-4 text-cyber-blue glow-text">
+<div class="flex flex-col items-center">
+<span class="text-6xl md:text-9xl font-extrabold tracking-tighter">00</span>
+</div>
+<span class="text-4xl md:text-6xl font-light opacity-30">:</span>
+<div class="flex flex-col items-center">
+<span class="text-6xl md:text-9xl font-extrabold tracking-tighter">00</span>
+</div>
+<span class="text-4xl md:text-6xl font-light opacity-30">:</span>
+<div class="flex flex-col items-center">
+<span class="text-6xl md:text-9xl font-extrabold tracking-tighter">00</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 flex flex-col items-center gap-8 w-full max-w-md">
+<div class="flex w-full gap-2 p-1 bg-white/5 rounded-lg">
+<button class="flex-1 h-14 bg-cyber-blue text-black rounded font-bold text-sm tracking-wider uppercase hover:opacity-90 transition-opacity flex items-center justify-center gap-2 glow-border">
+<span class="material-symbols-outlined text-[18px] fill-1">play_arrow</span>
+<span>Start</span>
+</button>
+<button class="flex-1 h-14 bg-transparent border border-white text-white rounded font-bold text-sm tracking-wider uppercase hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">pause</span>
+<span>Pause</span>
+</button>
+<button class="flex-1 h-14 bg-transparent border border-white text-white rounded font-bold text-sm tracking-wider uppercase hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">coffee</span>
+<span class="hidden sm:inline">Fuel Break</span>
+<span class="sm:hidden">Fuel</span>
+</button>
+</div>
+<div class="w-full px-4">
+<div class="flex justify-between items-end mb-2">
+<span class="text-[10px] uppercase tracking-widest font-bold opacity-40 text-white">Session Completion</span>
+<span class="text-xs font-bold text-cyber-blue">65%</span>
+</div>
+<div class="h-[2px] w-full bg-white/10 overflow-hidden">
+<div class="h-full bg-cyber-blue w-[65%] shadow-[0_0_8px_rgba(0,240,255,0.8)]"></div>
+</div>
+</div>
+</div>
+</main>
+<footer class="p-8 flex justify-center items-center">
+<div class="flex items-center gap-3 px-4 py-2 border border-white/10 rounded-full">
+<span class="material-symbols-outlined text-[16px] text-cyber-blue animate-pulse">keyboard_double_arrow_right</span>
+<p class="text-[11px] font-medium tracking-wide uppercase opacity-60 text-white">
+                Next: <span class="text-white font-bold">5 min Fuel Break</span>
+</p>
+</div>
+</footer>
+</div>
+
+</body></html>

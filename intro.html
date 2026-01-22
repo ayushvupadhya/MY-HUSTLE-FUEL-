@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Hustle Fuel | Cyberpunk Interface</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700;800&amp;family=Orbitron:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#00E5FF",
+                        "background-light": "#f0f9ff",
+                        "background-dark": "#05070a",
+                        "surface-dark": "#0a0c10",
+                        "accent-cyan": "#00E5FF",
+                        "accent-cyan-dim": "rgba(0, 229, 255, 0.1)",
+                    },
+                    fontFamily: {
+                        display: ["Orbitron", "sans-serif"],
+                        mono: ["JetBrains Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "2px",
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #111 1px, transparent 1px), linear-gradient(to bottom, #111 1px, transparent 1px)",
+                    }
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        body {
+            @apply bg-[#05070a] text-white font-mono;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.05) 0%, transparent 50%),
+                linear-gradient(to right, #0a0a0a 1px, transparent 1px),
+                linear-gradient(to bottom, #0a0a0a 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+        }
+        .glow-cyan {
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5), 0 0 20px rgba(0, 229, 255, 0.3);
+        }
+        .border-glow {
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.15), inset 0 0 15px rgba(0, 229, 255, 0.05);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+        }
+        .cyber-button {
+            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+        }
+        .cyber-card-clip {
+            clip-path: polygon(0 0, 95% 0, 100% 5%, 100% 100%, 5% 100%, 0 95%);
+        }
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 10;
+            background: linear-gradient(0deg, rgba(0, 229, 255, 0) 0%, rgba(0, 229, 255, 0.02) 50%, rgba(0, 229, 255, 0) 100%);
+            opacity: 0.1;
+            position: fixed;
+            bottom: 100%;
+            animation: scanline 10s linear infinite;
+        }
+        @keyframes scanline {
+            0% { bottom: 100%; }
+            100% { bottom: -100px; }
+        }
+    </style>
+</head>
+<body class="selection:bg-primary selection:text-black">
+<div class="scanline"></div>
+<nav class="sticky top-0 z-50 bg-background-dark/80 backdrop-blur-md border-b border-white/5 py-4">
+<div class="container mx-auto px-6 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-primary flex items-center justify-center rotate-45">
+<span class="material-symbols-outlined text-black -rotate-45 font-bold">bolt</span>
+</div>
+<span class="font-display font-black tracking-tighter text-xl italic uppercase">My Hustle Fuel</span>
+</div>
+<div class="hidden md:flex items-center gap-8 text-[10px] tracking-[0.2em] font-bold text-gray-400">
+<a class="hover:text-primary transition-colors" href="#">SYSTEM</a>
+<a class="hover:text-primary transition-colors" href="#">AUGMENTS</a>
+<a class="hover:text-primary transition-colors" href="#">NODES</a>
+<a class="hover:text-primary transition-colors" href="#">ACCESS</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-black px-4 py-1.5 text-[10px] font-display font-black tracking-widest hover:brightness-110 transition-all shadow-[0_0_15px_rgba(0,229,255,0.4)]">
+                    HUSTLE_LOGIN
+                </button>
+</div>
+</div>
+</nav>
+<main class="container mx-auto px-6">
+<section class="min-h-screen flex flex-col justify-center py-20 relative">
+<div class="absolute top-10 left-0 flex items-center gap-3">
+<div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+<span class="text-[10px] font-mono tracking-[0.3em] text-primary border border-primary/30 px-2 py-0.5">STATUS: NEURAL LINK ESTABLISHED</span>
+</div>
+<div class="grid lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7">
+<h1 class="font-display text-7xl md:text-8xl lg:text-9xl font-black leading-[0.85] tracking-tighter mb-6">
+<span class="block">FUEL</span>
+<span class="block">YOUR</span>
+<span class="block text-primary glow-cyan">HUSTLE</span>
+</h1>
+<p class="text-gray-400 max-w-md font-light leading-relaxed mb-10 text-sm">
+                        The terminal for high-frequency living. Unified synchronization for your physical telemetry, cognitive output, and neural endurance.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-black px-8 py-4 font-display font-black text-sm tracking-widest cyber-button hover:bg-white transition-all shadow-lg shadow-primary/20">
+                            START PROTOCOL
+                        </button>
+<button class="bg-transparent border border-white/20 text-white px-8 py-4 font-display font-black text-sm tracking-widest cyber-button hover:bg-white/5 transition-all">
+                            INTERFACE DEMO
+                        </button>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="border-glow bg-surface-dark/40 backdrop-blur-sm p-6 cyber-card-clip">
+<div class="flex justify-between items-start mb-10">
+<span class="text-[9px] font-mono text-gray-500">SERIAL_V2_SY_09</span>
+<div class="w-4 h-4 bg-primary/20 border border-primary/40"></div>
+</div>
+<div class="mb-8">
+<span class="text-[10px] font-mono text-gray-400 tracking-widest block mb-1 uppercase">Sync Efficiency</span>
+<div class="flex items-end gap-4">
+<span class="text-5xl font-display font-black text-primary italic">98.7<span class="text-2xl">%</span></span>
+<div class="flex gap-1 h-12 items-end pb-2">
+<div class="w-1 bg-primary/20 h-4"></div>
+<div class="w-1 bg-primary/40 h-6"></div>
+<div class="w-1 bg-primary/60 h-10"></div>
+<div class="w-1 bg-primary h-8"></div>
+</div>
+</div>
+</div>
+<div class="space-y-1 font-mono text-[9px] text-primary/70">
+<p>&gt; OMNI_DRIVERS_STABLE</p>
+<p>&gt; LATENCY_3ms</p>
+<p>&gt; RECOVERY_PHASE_COMPLETE</p>
+</div>
+</div>
+<div class="absolute -bottom-6 -right-6 w-12 h-12 border-b-2 border-r-2 border-primary"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-32 border-t border-white/10 pt-12">
+<div>
+<span class="text-[9px] text-gray-500 font-mono tracking-widest block mb-2 uppercase">Syncing Users</span>
+<p class="text-3xl font-display font-black">24.8<span class="text-primary">K</span></p>
+</div>
+<div>
+<span class="text-[9px] text-gray-500 font-mono tracking-widest block mb-2 uppercase">Force Vector</span>
+<p class="text-3xl font-display font-black">5.2<span class="text-primary text-xl">M LBS</span></p>
+</div>
+<div>
+<span class="text-[9px] text-gray-500 font-mono tracking-widest block mb-2 uppercase">Neural Cycles</span>
+<p class="text-3xl font-display font-black">821<span class="text-primary">M</span></p>
+</div>
+<div>
+<span class="text-[9px] text-gray-500 font-mono tracking-widest block mb-2 uppercase">Uptime Index</span>
+<p class="text-3xl font-display font-black text-primary">99.99</p>
+</div>
+</div>
+</section>
+<section class="py-32">
+<div class="max-w-4xl mb-20">
+<h2 class="font-display text-5xl md:text-7xl font-black italic tracking-tighter leading-none mb-6">
+                    UNIFY THE<br/>
+<span class="text-primary glow-cyan">CHROME &amp; SOUL</span>
+</h2>
+<p class="text-gray-400 font-light max-w-xl">
+                    Eradicate switching lag. Hustle Fuel integrates your physical biomechanics with your cognitive output into a single, high-fidelity stream.
+                </p>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="group relative">
+<div class="absolute -top-4 -left-4 text-8xl font-display font-black text-primary/5 select-none">01</div>
+<div class="border border-white/10 bg-surface-dark/50 p-10 hover:border-primary/50 transition-all relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary text-4xl">fitness_center</span>
+</div>
+<span class="material-symbols-outlined text-primary mb-6 block text-3xl">fitness_center</span>
+<h3 class="font-display text-2xl font-black mb-4 tracking-tighter uppercase">Biometric Rig</h3>
+<p class="text-gray-400 text-sm leading-relaxed mb-8">
+                            Telemetry for high-spec athletes. Real-time data logging for TRM, kinetic volume, and autonomic recovery.
+                        </p>
+<ul class="space-y-3 font-mono text-[10px] tracking-widest text-primary/80">
+<li class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 bg-primary"></span>
+                                [LOG] ULTRA-LOW LATENCY REP INPUT
+                            </li>
+<li class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 bg-primary"></span>
+                                [VIS] PROGRESSION HEATMAPS
+                            </li>
+</ul>
+</div>
+</div>
+<div class="group relative">
+<div class="absolute -top-4 -left-4 text-8xl font-display font-black text-primary/5 select-none">02</div>
+<div class="border border-white/10 bg-surface-dark/50 p-10 hover:border-primary/50 transition-all relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary text-4xl">terminal</span>
+</div>
+<span class="material-symbols-outlined text-primary mb-6 block text-3xl">terminal</span>
+<h3 class="font-display text-2xl font-black mb-4 tracking-tighter uppercase">Cognitive Flow</h3>
+<p class="text-gray-400 text-sm leading-relaxed mb-8">
+                            Optimization for neural engineers. Deep-work isolation, repository tracking, and focus-state maintenance.
+                        </p>
+<ul class="space-y-3 font-mono text-[10px] tracking-widest text-primary/80">
+<li class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 bg-primary"></span>
+                                [ISO] POMODORO OVERDRIVE MODE
+                            </li>
+<li class="flex items-center gap-3">
+<span class="w-1.5 h-1.5 bg-primary"></span>
+                                [SYNC] IDE &amp; REMOTE REPO LINK
+                            </li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 grid lg:grid-cols-2 gap-20 items-center">
+<div>
+<h2 class="font-display text-5xl font-black italic tracking-tighter leading-none mb-4 uppercase">
+                    Autonomous<br/>
+<span class="text-primary glow-cyan">Discipline.</span>
+</h2>
+<p class="text-gray-400 font-light max-w-md mb-12">
+                    Neural-link your schedule. Hustle Fuel autonomously orchestrates your calendar, carving out high-intensity windows for physical output and deep-focus cycles based on your biometrics.
+                </p>
+<div class="border-glow bg-primary/5 p-6 cyber-card-clip flex items-center gap-6">
+<div class="w-12 h-12 bg-primary/20 flex items-center justify-center border border-primary/40">
+<span class="material-symbols-outlined text-primary">sync_alt</span>
+</div>
+<div>
+<h4 class="font-display font-black tracking-tighter text-sm uppercase">Live Neural Sync</h4>
+<p class="font-mono text-[10px] text-primary/60">&gt; @_CAL_FEED_POLLING_EVERY_MS</p>
+</div>
+</div>
+</div>
+<div class="border border-white/10 bg-surface-dark/40 p-1 relative">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+<div class="p-8">
+<div class="flex justify-between items-center mb-10">
+<span class="text-[9px] font-mono text-gray-500 uppercase tracking-widest">OPERATIONAL_RAP_V2</span>
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-primary/20"></div>
+<div class="w-2 h-2 rounded-full bg-primary/20"></div>
+<div class="w-2 h-2 rounded-full bg-primary/50"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-6 p-4 border-l-2 border-transparent hover:bg-white/5 transition-colors">
+<span class="font-mono text-[11px] text-gray-500">06:00</span>
+<div>
+<h5 class="text-sm font-display font-bold tracking-tight uppercase">Biomechanical Load: Deadlifts</h5>
+<p class="text-[9px] font-mono text-primary/40 mt-1 uppercase">Intensity: 85% MAX_LOAD</p>
+</div>
+</div>
+<div class="flex items-center gap-6 p-4 border-l-2 border-transparent hover:bg-white/5 transition-colors">
+<span class="font-mono text-[11px] text-gray-500">09:30</span>
+<div>
+<h5 class="text-sm font-display font-bold tracking-tight uppercase">Neural Sync: Team Meeting</h5>
+</div>
+</div>
+<div class="flex items-center gap-6 p-6 bg-primary/5 border-l-2 border-primary shadow-[inset_0_0_20px_rgba(0,229,255,0.05)]">
+<span class="font-mono text-[11px] text-primary">11:00</span>
+<div class="flex-1">
+<h5 class="text-sm font-display font-black tracking-tight uppercase text-primary">Deep Flow: Archit_Design</h5>
+<p class="text-[9px] font-mono text-primary/60 mt-1 uppercase">Status: PRIORITY_ALPHA</p>
+</div>
+<div class="w-2 h-2 bg-primary animate-ping"></div>
+</div>
+<div class="flex items-center gap-6 p-4 border-l-2 border-transparent hover:bg-white/5 transition-colors">
+<span class="font-mono text-[11px] text-gray-500">16:00</span>
+<div>
+<h5 class="text-sm font-display font-bold tracking-tight uppercase">Inbound_Queue_Clear</h5>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 right-0 w-4 h-4 border-r-2 border-b-2 border-primary"></div>
+</div>
+</section>
+<section class="py-40 text-center relative overflow-hidden">
+<div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.03]">
+<span class="font-display font-black text-[30rem] leading-none">FUEL</span>
+</div>
+<div class="relative z-10">
+<h2 class="font-display text-7xl md:text-9xl font-black tracking-tighter mb-4 leading-none uppercase">
+                    Sever the<br/>
+<span class="text-primary glow-cyan">Mediocrity.</span>
+</h2>
+<p class="text-gray-400 font-light max-w-lg mx-auto mb-12">
+                    The future belongs to those who track it. Upload your hustle to the grid today.
+                </p>
+<button class="bg-primary text-black px-12 py-5 font-display font-black text-lg tracking-widest cyber-button hover:brightness-110 transition-all flex items-center gap-4 mx-auto shadow-2xl shadow-primary/30">
+                    ESTABLISH LINK
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</section>
+</main>
+<footer class="border-t border-white/5 bg-surface-dark py-20">
+<div class="container mx-auto px-6">
+<div class="grid md:grid-cols-4 gap-12 mb-20">
+<div class="col-span-1">
+<div class="flex items-center gap-2 mb-6">
+<div class="w-6 h-6 bg-primary flex items-center justify-center rotate-45">
+<span class="material-symbols-outlined text-black -rotate-45 text-xs font-bold">bolt</span>
+</div>
+<span class="font-display font-black tracking-tighter text-lg italic uppercase">MY HUSTLE FUEL</span>
+</div>
+<p class="text-[10px] leading-relaxed text-gray-500 uppercase tracking-widest">
+                        Unified Operating System for high-performance entities. Built for the data-obsessed athlete and the neural-layer engineer.
+                    </p>
+</div>
+<div>
+<h5 class="text-[10px] font-mono font-bold text-gray-600 mb-8 tracking-[0.3em] uppercase">Modules</h5>
+<ul class="space-y-4 font-mono text-[10px] text-gray-400 tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="#">SYSTEM_OS</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">NEURAL_AUGMENTS</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">CHANGELOG_V8</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-[10px] font-mono font-bold text-gray-600 mb-8 tracking-[0.3em] uppercase">Entity</h5>
+<ul class="space-y-4 font-mono text-[10px] text-gray-400 tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="#">THE_FOUNDRY</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">MANIFESTO_G1</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">RECRUITMENT</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-[10px] font-mono font-bold text-gray-600 mb-8 tracking-[0.3em] uppercase">Access</h5>
+<ul class="space-y-4 font-mono text-[10px] text-gray-400 tracking-widest">
+<li><a class="hover:text-primary transition-colors" href="#">TERMINAL_SUPPORT</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">DOCS_V4</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">PRIVACY_PROTOCOLS</a></li>
+</ul>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 border-t border-white/5 pt-10">
+<p class="text-[9px] font-mono text-gray-600 tracking-widest">© 2024 MY_HUSTLE_FUEL.CONSTRUCT. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-8 text-[9px] font-mono text-gray-600 tracking-[0.3em]">
+<span class="text-primary/60">LINK_STABLE</span>
+<span>NEVER_SLEEP. NEVER_SETTLE.</span>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>
